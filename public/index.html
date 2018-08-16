@@ -1,0 +1,420 @@
+<html xmlns="http://www.w3.org/1999/xhtml" class="mdl-js">
+
+<head>
+  <title>HTML to PowerPoint</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+
+<body>
+  <h2>HTML to PowerPoint Options</h2>
+  <button onclick="exportToPptx()" type="button">Export to PPTX</button>
+  <table id="demo">
+    <thead>
+      <tr>
+        <th style="text-align:left">Option</th>
+        <th style="text-align:left">Type</th>
+        <th style="text-align:left">Unit</th>
+        <th style="text-align:left">Description</th>
+        <th style="text-align:left">Possible Values</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align:left">
+          <code>x</code>
+        </td>
+        <td style="text-align:left">number</td>
+        <td style="text-align:left">inches</td>
+        <td style="text-align:left">horizontal location</td>
+        <td style="text-align:left">0-256. Table will be placed here on each Slide</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>y</code>
+        </td>
+        <td style="text-align:left">number</td>
+        <td style="text-align:left">inches</td>
+        <td style="text-align:left">vertical location</td>
+        <td style="text-align:left">0-256. Table will be placed here on each Slide</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>w</code>
+        </td>
+        <td style="text-align:left">number</td>
+        <td style="text-align:left">inches</td>
+        <td style="text-align:left">width</td>
+        <td style="text-align:left">0-256. Default is (100% - Slide margins)</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>h</code>
+        </td>
+        <td style="text-align:left">number</td>
+        <td style="text-align:left">inches</td>
+        <td style="text-align:left">height</td>
+        <td style="text-align:left">0-256. Default is (100% - Slide margins)</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>master</code>
+        </td>
+        <td style="text-align:left">string</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">master slide to use</td>
+        <td style="text-align:left">
+          <a href="#slide-masters">Slide Masters</a> name. Ex:
+          <code>{ master:'TITLE_SLIDE' }</code>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>addHeaderToEach</code>
+        </td>
+        <td style="text-align:left">boolean</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">add table headers to each slide</td>
+        <td style="text-align:left">Ex:
+          <code>addHeaderToEach:true</code>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>addImage</code>
+        </td>
+        <td style="text-align:left">string</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">add an image to each slide</td>
+        <td style="text-align:left">Ex:
+          <code>{ addImage:{ path:"images/logo.png", x:10, y:0.5, w:1.2, h:0.75 } }</code>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>addShape</code>
+        </td>
+        <td style="text-align:left">string</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">add a shape to each slide</td>
+        <td style="text-align:left">Use the established syntax</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>addTable</code>
+        </td>
+        <td style="text-align:left">string</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">add a table to each slide</td>
+        <td style="text-align:left">Use the established syntax</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>addText</code>
+        </td>
+        <td style="text-align:left">string</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">add text to each slide</td>
+        <td style="text-align:left">Use the established syntax</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>addHeaderToEach</code>
+        </td>
+        <td style="text-align:left">boolean</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">add table headers to each slide</td>
+        <td style="text-align:left">Ex:
+          <code>addHeaderToEach:true</code>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>addImage</code>
+        </td>
+        <td style="text-align:left">string</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">add an image to each slide</td>
+        <td style="text-align:left">Ex:
+          <code>{ addImage:{ path:"images/logo.png", x:10, y:0.5, w:1.2, h:0.75 } }</code>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>addShape</code>
+        </td>
+        <td style="text-align:left">string</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">add a shape to each slide</td>
+        <td style="text-align:left">Use the established syntax</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>addTable</code>
+        </td>
+        <td style="text-align:left">string</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">add a table to each slide</td>
+        <td style="text-align:left">Use the established syntax</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>addText</code>
+        </td>
+        <td style="text-align:left">string</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">add text to each slide</td>
+        <td style="text-align:left">Use the established syntax</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>addHeaderToEach</code>
+        </td>
+        <td style="text-align:left">boolean</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">add table headers to each slide</td>
+        <td style="text-align:left">Ex:
+          <code>addHeaderToEach:true</code>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>addImage</code>
+        </td>
+        <td style="text-align:left">string</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">add an image to each slide</td>
+        <td style="text-align:left">Ex:
+          <code>{ addImage:{ path:"images/logo.png", x:10, y:0.5, w:1.2, h:0.75 } }</code>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>addShape</code>
+        </td>
+        <td style="text-align:left">string</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">add a shape to each slide</td>
+        <td style="text-align:left">Use the established syntax</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>addTable</code>
+        </td>
+        <td style="text-align:left">string</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">add a table to each slide</td>
+        <td style="text-align:left">Use the established syntax</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>addText</code>
+        </td>
+        <td style="text-align:left">string</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">add text to each slide</td>
+        <td style="text-align:left">Use the established syntax</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>addHeaderToEach</code>
+        </td>
+        <td style="text-align:left">boolean</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">add table headers to each slide</td>
+        <td style="text-align:left">Ex:
+          <code>addHeaderToEach:true</code>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>addImage</code>
+        </td>
+        <td style="text-align:left">string</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">add an image to each slide</td>
+        <td style="text-align:left">Ex:
+          <code>{ addImage:{ path:"images/logo.png", x:10, y:0.5, w:1.2, h:0.75 } }</code>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>addShape</code>
+        </td>
+        <td style="text-align:left">string</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">add a shape to each slide</td>
+        <td style="text-align:left">Use the established syntax</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>addTable</code>
+        </td>
+        <td style="text-align:left">string</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">add a table to each slide</td>
+        <td style="text-align:left">Use the established syntax</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>addText</code>
+        </td>
+        <td style="text-align:left">string</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">add text to each slide</td>
+        <td style="text-align:left">Use the established syntax</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>addHeaderToEach</code>
+        </td>
+        <td style="text-align:left">boolean</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">add table headers to each slide</td>
+        <td style="text-align:left">Ex:
+          <code>addHeaderToEach:true</code>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>addImage</code>
+        </td>
+        <td style="text-align:left">string</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">add an image to each slide</td>
+        <td style="text-align:left">Ex:
+          <code>{ addImage:{ path:"images/logo.png", x:10, y:0.5, w:1.2, h:0.75 } }</code>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>addShape</code>
+        </td>
+        <td style="text-align:left">string</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">add a shape to each slide</td>
+        <td style="text-align:left">Use the established syntax</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>addTable</code>
+        </td>
+        <td style="text-align:left">string</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">add a table to each slide</td>
+        <td style="text-align:left">Use the established syntax</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>addText</code>
+        </td>
+        <td style="text-align:left">string</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">add text to each slide</td>
+        <td style="text-align:left">Use the established syntax</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>addHeaderToEach</code>
+        </td>
+        <td style="text-align:left">boolean</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">add table headers to each slide</td>
+        <td style="text-align:left">Ex:
+          <code>addHeaderToEach:true</code>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>addImage</code>
+        </td>
+        <td style="text-align:left">string</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">add an image to each slide</td>
+        <td style="text-align:left">Ex:
+          <code>{ addImage:{ path:"images/logo.png", x:10, y:0.5, w:1.2, h:0.75 } }</code>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>addShape</code>
+        </td>
+        <td style="text-align:left">string</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">add a shape to each slide</td>
+        <td style="text-align:left">Use the established syntax</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>addTable</code>
+        </td>
+        <td style="text-align:left">string</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">add a table to each slide</td>
+        <td style="text-align:left">Use the established syntax</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>addText</code>
+        </td>
+        <td style="text-align:left">string</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">add text to each slide</td>
+        <td style="text-align:left">Use the established syntax</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>addHeaderToEach</code>
+        </td>
+        <td style="text-align:left">boolean</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">add table headers to each slide</td>
+        <td style="text-align:left">Ex:
+          <code>addHeaderToEach:true</code>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>addImage</code>
+        </td>
+        <td style="text-align:left">string</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">add an image to each slide</td>
+        <td style="text-align:left">Ex:
+          <code>{ addImage:{ path:"images/logo.png", x:10, y:0.5, w:1.2, h:0.75 } }</code>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>addShape</code>
+        </td>
+        <td style="text-align:left">string</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">add a shape to each slide</td>
+        <td style="text-align:left">Use the established syntax</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>addTable</code>
+        </td>
+        <td style="text-align:left">string</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">add a table to each slide</td>
+        <td style="text-align:left">Use the established syntax</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">
+          <code>addText</code>
+        </td>
+        <td style="text-align:left">string</td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left">add text to each slide</td>
+        <td style="text-align:left">Use the established syntax</td>
+      </tr>
+    </tbody>
+  </table>
+  <script lang="javascript" src="https://cdn.rawgit.com/gitbrent/PptxGenJS/v2.0.0/dist/pptxgen.bundle.js"></script>
+  <script lang="javascript" src="/js/main.js"></script>
+</body>
+
+</html>
